@@ -9,8 +9,8 @@ client.once(Events.ClientReady, () => {
 
 client.on(Events.InteractionCreate, async interaction => {
   if (!interaction.isChatInputCommand()) return;
-  if (interaction.commandName === 'ping') {
-    await interaction.reply('Pong!');
+  if (interaction.commandName === 'test') {
+    await interaction.reply('working! :)');
   }
 });
 
@@ -19,8 +19,8 @@ client.login(process.env.TOKEN);
 // Register slash command
 const commands = [
   new SlashCommandBuilder()
-    .setName('ping')
-    .setDescription('Replies with Pong!')
+    .setName('test')
+    .setDescription('Replies!')
 ].map(cmd => cmd.toJSON());
 
 const rest = new REST({ version: '10' }).setToken(process.env.TOKEN);
