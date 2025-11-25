@@ -1,3 +1,14 @@
+const express = require("express");
+const app = express();
+
+app.get("/", (req, res) => {
+  res.send("Hello from my Replit JS server!");
+});
+
+app.listen(5000, "0.0.0.0", () => {
+  console.log("Server running on port 5000");
+});
+
 const { Client, GatewayIntentBits, Events, REST, Routes, SlashCommandBuilder } = require('discord.js');
 require('dotenv').config();
 

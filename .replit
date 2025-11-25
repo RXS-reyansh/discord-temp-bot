@@ -6,6 +6,7 @@ expertMode = true
 channel = "stable-25_05"
 
 [workflows]
+runButton = "Project"
 
 [[workflows.workflow]]
 name = "run bot"
@@ -14,4 +15,33 @@ author = 37682689
 
 [[workflows.workflow.tasks]]
 task = "shell.exec"
-args = ""
+args = "nodejs run"
+
+[[workflows.workflow]]
+name = "Project"
+mode = "parallel"
+author = "agent"
+
+[[workflows.workflow.tasks]]
+task = "workflow.run"
+args = "Start Discord Bot"
+
+[[workflows.workflow]]
+name = "Start Discord Bot"
+author = "agent"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "node index.js"
+waitForPort = 5000
+
+[workflows.workflow.metadata]
+outputType = "webview"
+
+[[ports]]
+localPort = 3000
+externalPort = 80
+
+[[ports]]
+localPort = 5000
+externalPort = 80
