@@ -1,12 +1,20 @@
 const express = require("express");
 const app = express();
 
+// Root route (optional)
 app.get("/", (req, res) => {
-  res.send("Hello from my Replit JS server!");
+  res.send("Hello from Musicium!");
 });
 
-app.listen(5000, "0.0.0.0", () => {
-  console.log("Server running on port 5000");
+// UptimeRobot ping route
+app.get("/ping", (req, res) => {
+  res.status(200).send("Bot is alive");
+});
+
+// Use dynamic port for Render or fallback for local dev
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });
 
 const { Client, GatewayIntentBits, Events, REST, Routes, SlashCommandBuilder } = require('discord.js');
